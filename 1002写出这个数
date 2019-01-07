@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+/*int abc(int a) //用递归把各个位的数提出来 
+{
+  	if(a>=10)
+  	{
+       	abc(a/10);
+	}
+  	printf("%d ",a%10);
+}*/
+int main()
+{
+	int sum=0;//数组的和 
+    char ch[10000];//能处理10^100以内的数
+    char pingyin[10][10]={"ling","yi","er","san","si","wu","liu","qi","ba","jiu"};
+    char *n=ch; //指针指向数组地址 
+	scanf("%s",ch);//将字符串存入数组 
+	//printf("%s\n", ch);//查看是否存入 
+	do
+	{
+		sum=sum+(*n-'0');//将字符串数组转成整型数组并相加 
+		n++;//指向下一个数字 
+	}while(*n!='\0');//循环到结束符 
+	//printf("%d\n", sum);//查看是否相加成功
+	//abc(sum);
+	if(sum>999)
+	{
+		printf("%s ",pingyin[sum/1000]);
+		printf("%s ",pingyin[sum%1000/100]);//百位 
+		printf("%s ",pingyin[sum%1000%100/10]);//十位 
+		printf("%s",pingyin[sum%1000%100%10]);//个位 
+	}
+	else if(sum>99)
+	{
+		printf("%s ",pingyin[sum/100]);//百位 
+		printf("%s ",pingyin[sum%100/10]);//十位 
+		printf("%s",pingyin[sum%100%10]);//个位 
+	}
+	else if(sum>9)
+	{
+		printf("%s ",pingyin[sum/10]);//十位
+		printf("%s",pingyin[sum%10]);//个位 
+	}
+	else
+	{
+		printf("%s",pingyin[sum]);
+	}
+	return 0;
+}
